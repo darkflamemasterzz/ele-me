@@ -1,0 +1,52 @@
+@import "./reset";
+
+@function px2rem($px) {
+    @return $px / 16 + rem;
+}
+
+@mixin center() {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+@mixin left() {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+@mixin right() {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+@mixin ellipsis() {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+// background-img居中
+@mixin bgCenter($url) {
+    background: url($url) center center no-repeat;
+}
+
+// ul水平导航栏
+@mixin ulNav(){
+    list-style-type:none;
+    text-align:center;
+    font-size:14px;
+}
+@mixin liNav(){
+    float:left;
+    width:80px;
+    padding:10px;
+}
+
+$headerHeight: px2rem(80);
+$darkTextColor: #333;
+
+.icon {
+    color: #333;
+    font-size: px2rem(20);
+}
+
