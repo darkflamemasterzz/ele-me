@@ -1,5 +1,5 @@
 <template>
-<div id="home">
+<div>
     <div class="banner">
         <div class="header">
             <div class="logoWrapper">
@@ -7,7 +7,11 @@
             </div>
             <div class="navigatorWrapper">
                 <ul class="navigator">
-                    <li>开放平台</li>
+                    <li>
+                        <router-link to="/openAPI">
+                            开放平台
+                        </router-link>
+                    </li>
                     <li>企业订餐</li>
                     <li>手机端</li>
                 </ul>
@@ -31,50 +35,8 @@ export default {
   name: "Home",
   data () {
     return {
-        screenHeight: window.innerHeight,
-        minScreenHeight: 450,
-        imgBannar: '',
     }
   },
-
-  created () {
-      
-  },
-
-  mounted () {
-      // 使用异步函数nextTick更新DOM
-      this.$nextTick(() => {
-          console.log("DOM更新了")
-      })
-
-      // 计算屏幕高度，并把之赋给#home
-      window.screenHeight = window.innerHeight
-      this.screenHeight = window.screenHeight
-      var home = document.getElementById('home')
-    //   home.style.height = this.screenHeight + 'px'
-      home.style.height = window.screenHeight > this.minScreenHeight ? this.screenHeight + 'px' : this.minScreenHeight + 'px'
-      console.log(home.style.height < this.minScreenHeight)
-
-      const that = this
-      // 相应屏幕变化
-      window.onresize = () => {
-          return ( () => {
-              window.screenHeight = window.innerHeight
-              that.screenHeight = window.screenHeight
-          })()
-      }
-  },
-
-  watch:{
-      // 监听屏幕宽度变化
-      screenHeight(val){
-          // 更新DOM
-          var home = document.getElementById('home')
-        //   home.style.height = this.screenHeight + 'px'
-          home.style.height = window.screenHeight > this.minScreenHeight ? this.screenHeight + 'px' : this.minScreenHeight + 'px'
-          console.log(home.style.height < this.minScreenHeight)
-      }
-  }
 
 }
 </script>
@@ -82,10 +44,8 @@ export default {
 <style lang="scss" scoped>
 @import '../../assets/styles/global.scss';
 
-#home{
-    position: relative;
-    width: 100%;
-    .banner{
+.banner{
+        background: red;
         position: absolute;
         width: 100%;
         top: 0;
@@ -146,6 +106,5 @@ export default {
             }
         }
     }
-}
 
 </style>
